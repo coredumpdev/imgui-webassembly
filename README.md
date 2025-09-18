@@ -48,7 +48,7 @@ To build this project, you will need the **Emscripten SDK**. If you don't have i
 
 ## Usage
 
-After the compilation is complete, an **`.html`**, **`.js`**, and **`.wasm`** file will be created in the **`./build`** folder. You need to run these files through a web server. You can use Python's built-in server for this purpose:
+After the compilation is complete, an **`.html`**, **`.js`**, and **`.wasm`** file will be created in the current folder. You need to run these files through a web server. You can use Python's built-in server for this purpose:
 
 1.  **Start the Python server:**
     ```bash
