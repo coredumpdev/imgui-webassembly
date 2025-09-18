@@ -15,6 +15,7 @@ SRC = \
   src/main.cpp \
   src/UI/Application.cpp \
   src/UI/Components/SimpleWindow.cpp \
+  src/UI/Components/Plot3d.cpp \
   src/ui-source/imgui.cpp \
   src/ui-source/imgui_draw.cpp \
   src/ui-source/imgui_widgets.cpp \

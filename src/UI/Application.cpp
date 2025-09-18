@@ -1,7 +1,7 @@
 #include "Application.h"
 
 Application::Application()
-    : m_glslVersion("#version 130"), m_mainScale(0.0), m_window(nullptr), m_width(WINDOW_WIDTH), m_height(WINDOW_HEIGHT), m_title("Hello world"), m_io(nullptr), m_style(), m_windowColor(), m_simpleWindow(nullptr)
+    : m_glslVersion("#version 130"), m_mainScale(0.0), m_window(nullptr), m_width(WINDOW_WIDTH), m_height(WINDOW_HEIGHT), m_title("Hello world"), m_io(nullptr), m_style(), m_windowColor(), m_simpleWindow(nullptr), m_plot3d(nullptr)
 {
 }
 
@@ -9,6 +9,9 @@ Application::Application()
 bool Application::Init()
 {
     glfwSetErrorCallback(glfwErrorCallback);
+
+    InitComponents();
+
 
     if (!glfwInit())
         return 1;
@@ -44,6 +47,9 @@ bool Application::Init()
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+
+    m_plot3d->Plot3dInit();
+
     m_io = &ImGui::GetIO();
     (void) m_io;
 
@@ -65,7 +71,6 @@ bool Application::Init()
 
     m_windowColor = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    InitComponents();
 
     return true;
 }
@@ -74,6 +79,7 @@ bool Application::Init()
 void Application::InitComponents()
 {
     m_simpleWindow = new SimpleWindow(m_io);
+    m_plot3d = new Plot3d();
 }
 
 void Application::StartImGui()
@@ -87,6 +93,7 @@ void Application::CleanUp()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
+    m_plot3d->CleanUp();
     ImGui::DestroyContext();
 
     glfwDestroyWindow(m_window);
@@ -119,6 +126,7 @@ void Application::Run()
          */
 
         m_simpleWindow->Render();
+        m_plot3d->Render();
 
         /*
          * 

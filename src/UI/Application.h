@@ -10,6 +10,7 @@
 #endif
 
 #include "Components/SimpleWindow.h"
+#include "Components/Plot3d.h"
 
 #include <iostream>
 
@@ -41,6 +42,7 @@ private:
 
     // Components
     SimpleWindow *m_simpleWindow;
+    Plot3d *m_plot3d;
 
 private:
     static void glfwErrorCallback(int error, const char *description)
