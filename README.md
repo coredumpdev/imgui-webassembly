@@ -25,7 +25,7 @@ To build this project, you will need the **Emscripten SDK**. If you don't have i
 
 1.  **Install the Emscripten SDK:**
     ```bash
-    git clone [https://github.com/emscripten-core/emsdk.git](https://github.com/emscripten-core/emsdk.git)
+    git clone https://github.com/emscripten-core/emsdk.git
     cd emsdk
     ./emsdk install latest
     ./emsdk activate latest
