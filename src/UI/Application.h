@@ -26,6 +26,7 @@ public:
     bool Init();
     void InitComponents();
     void StartImGui();
+    void RenderImGui();
     void CleanUp();
     void Run();
 

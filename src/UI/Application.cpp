@@ -89,6 +89,22 @@ void Application::StartImGui()
     ImGui::NewFrame();
 }
 
+void Application::RenderImGui()
+{
+    ImGui::Render();
+    int display_w, display_h;
+    glfwGetFramebufferSize(m_window, &display_w, &display_h);
+    glViewport(0, 0, display_w, display_h);
+    glClearColor(m_windowColor.x * m_windowColor.w,
+                    m_windowColor.y * m_windowColor.w,
+                    m_windowColor.z * m_windowColor.w,
+                    m_windowColor.w);
+    glClear(GL_COLOR_BUFFER_BIT);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+    glfwSwapBuffers(m_window);
+}
+
 void Application::CleanUp()
 {
     ImGui_ImplOpenGL3_Shutdown();
@@ -122,7 +138,6 @@ void Application::Run()
          * 
          * Component Rendering section
          * 
-         * 
          */
 
         m_simpleWindow->Render();
@@ -133,18 +148,9 @@ void Application::Run()
          * Component Rendering section ends here
          * 
          */
-        ImGui::Render();
-        int display_w, display_h;
-        glfwGetFramebufferSize(m_window, &display_w, &display_h);
-        glViewport(0, 0, display_w, display_h);
-        glClearColor(m_windowColor.x * m_windowColor.w,
-                     m_windowColor.y * m_windowColor.w,
-                     m_windowColor.z * m_windowColor.w,
-                     m_windowColor.w);
-        glClear(GL_COLOR_BUFFER_BIT);
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        glfwSwapBuffers(m_window);
+         RenderImGui();
+        
     }
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_MAINLOOP_END;

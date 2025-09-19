@@ -3,6 +3,7 @@
     "editor.defaultFormatter": "xaver.clang-format",
     "files.associations": {
         "iostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "functional": "cpp"
     }
 }

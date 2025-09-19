@@ -33,7 +33,7 @@ SRC = \
 
 OBJ = $(SRC:.cpp=.o)
 
-TARGET = imgui-tutorial.html
+TARGET = build/imgui-tutorial.html
 
 all: $(TARGET)
 
@@ -45,4 +45,3 @@ $(TARGET): $(OBJ)
 
 clean:
 	find src -name '*.o' -delete
-	rm -f $(TARGET) *.wasm *.js
